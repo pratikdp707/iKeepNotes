@@ -36,3 +36,111 @@
     transform: rotate(360deg);
   }
 }
+
+
+.form-container{
+  position: relative;
+  width: 400px;
+  margin: 30px auto 20px auto;
+  background: #fff;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+.note-title, .note-content{
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}
+
+.add-button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+.note {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 100%;
+  margin: 16px;
+  float: left;
+}
+.note h1 {
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}
+
+.note h3{
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  color: gray;
+}
+
+.note p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.btn-delete {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  background-color: #f5ba13;
+  color: #fff;
+}
+
+.auth-input {
+  width: 300px;
+  margin: auto;
+  border: 1px solid #f5ba13;
+}
+
+.auth-input::placeholder {
+  color: #f5ba13;
+}
+
+.auth-button {
+  color: #fff;
+}
+
+.auth-link-light {
+  color: gray;
+}
+
+.auth-link{
+  color: #f5ba13;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  color: #ffbb00;
+}
+
+.auth-container {
+  background-color: #fff;
+  border-radius: 20px;
+  height: auto;
+  width: 400px;
+  margin: auto;
+}
