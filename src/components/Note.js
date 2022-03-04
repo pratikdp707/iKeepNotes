@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import noteContext from '../context/notes/NoteContext'
 
+import {toast, ToastContainer} from 'react-toastify'
 export const Note = (props) => {
 
 
@@ -26,11 +27,11 @@ export const Note = (props) => {
 
     return (
         <div className="note text-start">
-            
+            <ToastContainer/>
             <h1>{note.title}</h1>
             <h3>{note.tag}</h3>
             <p>{note.description}</p>
-            <button className='btn-delete btn btn-sm' onClick={() => { deleteNote(props.note._id) }}><i className="fas fa-trash-alt"></i></button>
+            <button className='btn-delete btn btn-sm' onClick={() => { deleteNote(props.note._id); toast.success("Note deleted")}}><i className="fas fa-trash-alt"></i></button>
             <button className='btn-delete btn btn-sm' onClick={() => {updateNote(note)}}><i className="fas fa-pencil-alt"></i></button>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import noteContext from '../context/notes/NoteContext';
-
+import { ToastContainer, toast } from 'react-toastify'
 export const AddNote = () => {
     const context = useContext(noteContext);
     const [note, setNote] = useState({
@@ -19,6 +19,7 @@ export const AddNote = () => {
         e.preventDefault();
         console.log(note)
         addNote(note)
+        toast.success("Note Added")
         document.getElementById('title').value = "";
         document.getElementById('tag').value = "";
         document.getElementById('description').value = "";
@@ -26,6 +27,7 @@ export const AddNote = () => {
 
     return (
         <div className="form-container">
+            <ToastContainer/>
             <form action="">
                 <input className="note-title" type="text" name="title" id="title" placeholder='Title (min 3 characters)' minLength={3} required onChange={onChange} />
                 <input className="note-title" type="text" name="tag" id="tag" placeholder='Tag'  onChange={onChange} />

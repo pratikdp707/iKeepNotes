@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import NoteContext from './NoteContext';
 import axios from 'axios'
+import {getCookie, } from '../../helpers/auth'
 
 const NoteState = (props) => {
     const host = "http://localhost:5000/api/";
     const [notes, setNotes] = useState([]);
-
+    const authToken = getCookie('token');
     //get all notes
     const getNotes = async() => {
         const response = await axios.get(host+"notes/fetchAllNotes", {
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE4MTRmZjc3ZThkYWUzNmY5NWNjMGMxIn0sImlhdCI6MTYzNTk0NjAwMn0.rIe3Q6LRJVCQf7tZcTtYLLjOp78O9Qhw2jvFTEr2B2E"
+                "auth-token": authToken
             }
         })
+
+        console.log(response.data)
         setNotes(response.data.notes)
     }
 
@@ -23,11 +26,11 @@ const NoteState = (props) => {
         await axios.post(host + "notes/addNote/", {
             "title" : note.title,
             "description" : note.description,
-            "tag" : note.title
+            "tag" : note.tag
         }, {
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE4MTRmZjc3ZThkYWUzNmY5NWNjMGMxIn0sImlhdCI6MTYzNTk0NjAwMn0.rIe3Q6LRJVCQf7tZcTtYLLjOp78O9Qhw2jvFTEr2B2E"
+                "auth-token": authToken
             }
         })
         getNotes();
@@ -47,7 +50,7 @@ const NoteState = (props) => {
         },{
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE4MTRmZjc3ZThkYWUzNmY5NWNjMGMxIn0sImlhdCI6MTYzNTk0NjAwMn0.rIe3Q6LRJVCQf7tZcTtYLLjOp78O9Qhw2jvFTEr2B2E"
+                "auth-token": authToken
             }
         });
         getNotes();
@@ -59,7 +62,7 @@ const NoteState = (props) => {
         await axios.delete(host + "notes/deleteNote/" + id,{
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE4MTRmZjc3ZThkYWUzNmY5NWNjMGMxIn0sImlhdCI6MTYzNTk0NjAwMn0.rIe3Q6LRJVCQf7tZcTtYLLjOp78O9Qhw2jvFTEr2B2E"
+                "auth-token": authToken
             }
         });
         getNotes()

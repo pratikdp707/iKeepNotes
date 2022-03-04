@@ -39,10 +39,13 @@ const UserState = (props) => {
         const response = await axios.post(host + "auth/login", {
             email, password
         });
+        console.log(response.data)
         if (response.data.success) {
-            setCookie('authToken', response.data.authToken)
+            setCookie('token', response.data.authToken)
             await getUser(response.data.authToken)
-            return (true)
+            return true
+        } else {
+            return false
         }
     }
 

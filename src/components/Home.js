@@ -4,19 +4,22 @@ import userContext from '../context/users/UserContext';
 import { AddNote } from './AddNote';
 import { Navbar } from './Navbar';
 import { Note } from './Note'
+import { getCookie } from '../helpers/auth';
+import {toast, ToastContainer} from 'react-toastify'
 
 export const Home = () => {
 
     const context = useContext(noteContext)
     const uContext = useContext(userContext)
     const { notes, getNotes, editNote } = context;
-    const { user } = uContext;
+    const { getUser } = uContext;
     const [note, setNote] = useState({
         etitle: "",
         edescription: "",
         etag: "",
         id: ""
     });
+    const authToken = getCookie('token');
 
     const ref = useRef(null);
     const refClose = useRef(null);
@@ -27,7 +30,9 @@ export const Home = () => {
     const handleClick = (e) => {
         // e.preventDefault();
         editNote(note.id, note.etitle, note.edescription, note.etag)
+        toast.success("Note updated")
         refClose.current.click();
+
     }
 
     const updateNote = (currentNote) => {
@@ -43,12 +48,14 @@ export const Home = () => {
 
     useEffect(() => {
         getNotes();
+        getUser(authToken);
     }, [])
 
 
     return (
         <>
             <Navbar/>
+            <ToastContainer/>
             <div className='bg-light min-vh-100 pt-5'>
                 <AddNote />
                 <button type="button" ref={ref} className="d-none btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

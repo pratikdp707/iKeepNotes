@@ -11,7 +11,7 @@ export const Navbar = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        removeCookie('authToken')
+        removeCookie('token')
         removeLocalStorage('name');
         removeLocalStorage('email');
         removeLocalStorage('id');
