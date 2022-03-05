@@ -4,7 +4,7 @@ import axios from 'axios'
 import {getCookie, } from '../../helpers/auth'
 
 const NoteState = (props) => {
-    const host = "http://localhost:5000/api/";
+    const host = "https://ikeepnotes.herokuapp.com/api/";
     const [notes, setNotes] = useState([]);
     const authToken = getCookie('token');
     //get all notes

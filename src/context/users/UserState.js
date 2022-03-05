@@ -10,7 +10,7 @@ const UserState = (props) => {
         email: "",
         id: ""
     })
-    const host = "http://localhost:5000/api/";
+    const host = "https://ikeepnotes.herokuapp.com/api/";
 
     const getUser = async (authToken) => {
         // console.log(authToken)
